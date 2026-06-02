@@ -197,6 +197,8 @@ perde_vida = function()
 		
 		ativa_hitstop(20);
 		
+		ativa_damage_flash(c_red);
+		
 		if (vidas > 0)
 		{
 			vidas--;
