@@ -1,1 +1,1 @@
-cria_particulas(x, y, velh, velv);
+cria_particulas(20, 40, x, y, velh, velv, rainbow);

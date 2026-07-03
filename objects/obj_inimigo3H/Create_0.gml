@@ -33,6 +33,7 @@ maquina_de_estados = function()
 		break;
 		case "carregando":
 		{
+			velv = 0;
 			if (timer_tiro > 0)
 			{
 				timer_tiro--;
