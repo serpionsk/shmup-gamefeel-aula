@@ -13,6 +13,9 @@ if (global.gamemode == "hard" && !check_hardmode)
 {
 	layer_sequence_create("ModeHardOn", room_width/2 , room_height/2 , sq_modehard);
 	check_hardmode = true;
+	
+	base_level_tiro = 2;
+	level_tiro = 2;
 }
 
 muda_cor_planeta();

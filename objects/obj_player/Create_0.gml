@@ -31,6 +31,11 @@ invencivel = false;
 //segundos de invencibilidade
 segundos_invencivel = 2;
 
+//tempo de upgrade do power up
+level_tiro_timer = 0;
+
+//nivel base do tiro (muda para 2 no hard mode)
+base_level_tiro = 1;
 
 //inicia a alteraçãop nas escalas visuais do efeito mola(sem alterar colisao)
 inicia_efeito_mola();
@@ -79,6 +84,15 @@ controla_player = function()
 	//diminui o timer do tiro ao executar a propria função do tiro
 	timer_tiro--;
 	
+	if (level_tiro_timer > 0)
+	{
+		level_tiro_timer--;
+	
+		if (level_tiro_timer <= 0)
+		{
+			level_tiro = base_level_tiro;
+		}
+	}
 	
 	//se atirar e o timer tiro forem true
 	if (_atirar and timer_tiro <=0)
@@ -142,10 +156,11 @@ tiro_3 = function()
 }
 ganha_level = function()
 {
-	alarm[1] = game_get_speed(gamespeed_fps) * 10
-	if (level_tiro >= max_level_tiro) exit
+	if (level_tiro >= max_level_tiro) exit;
 	level_tiro++;
+	level_tiro_timer = game_get_speed(gamespeed_fps) * 10;
 }
+
 gera_clone = function()
 {
 	instance_create_layer(x + 50, y + 10, "Player", obj_player_clone)
