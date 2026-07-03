@@ -141,6 +141,7 @@
     {"name":"spr_inimigo3H","order":1,"path":"sprites/spr_inimigo3H/spr_inimigo3H.yy",},
     {"name":"spr_part_explosao","order":1,"path":"sprites/spr_part_explosao/spr_part_explosao.yy",},
     {"name":"spr_part_tiroplayer","order":2,"path":"sprites/spr_part_tiroplayer/spr_part_tiroplayer.yy",},
+    {"name":"spr_part_triang","order":1,"path":"sprites/spr_part_triang/spr_part_triang.yy",},
     {"name":"spr_planet_padrao","order":2,"path":"sprites/spr_planet_padrao/spr_planet_padrao.yy",},
     {"name":"spr_planet_PB","order":10,"path":"sprites/spr_planet_PB/spr_planet_PB.yy",},
     {"name":"spr_planet_red","order":7,"path":"sprites/spr_planet_red/spr_planet_red.yy",},

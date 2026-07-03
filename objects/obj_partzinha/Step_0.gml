@@ -14,5 +14,8 @@ image_blend = _nova_cor;
 
 if (vida_atual <= 0) instance_destroy();
 
-velh = _val * velh_original * _val;
-velv = _val * velv_original * _val;
+velh = (_val * _val) * velh_original;
+velv = (_val * _val) * velv_original;
+
+image_xscale = _val * escala_original;
+image_yscale = image_xscale;

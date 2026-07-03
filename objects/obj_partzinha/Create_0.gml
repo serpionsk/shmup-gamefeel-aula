@@ -10,3 +10,8 @@ vida_atual = vida_max;
 
 velh_original = 0;
 velv_original = 0;
+
+escala_original = 1;
+
+image_xscale = 0;
+image_yscale = 0;

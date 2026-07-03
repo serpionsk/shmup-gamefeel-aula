@@ -7,23 +7,33 @@ function cria_particulas(_vida_min = 30, _vida_max = 60, _x = 0, _y = 0, _velh =
 		var _qtd = irandom_range(10, 50);
 		var _vel = abs(_velh) + abs(_velv);
 		var _dir = point_direction(0, 0, _velh, _velv);
-		var _tam = random_range(0.2, .5);
+
 		repeat(_qtd)
 		{
+			var _x1 = _x + random_range(-12, 12);
+			var _y1 = _y + random_range(_velv, _velv * 4);
+			
 			var _part = instance_create_layer(_x, _y, "Particles", obj_partzinha);
 			
-			var _dir_part = _dir + random_range(-30, 30);
+			var _vel_final = _vel + random_range(0, 5);
 			
-			var _vida = random_range(_vida_min, _vida_max);
+			with(_part)
+			{
+				var _tam = random_range(0.2, .5);
+				var _dir_part = _dir + random_range(-30, 30);
 			
-			_part.velh_original = lengthdir_x(_vel, _dir_part);
-			_part.velv_original = lengthdir_y(_vel, _dir_part);
-			_part.image_xscale = _tam;
-			_part.image_yscale = _tam;
-			_part.image_angle = _dir_part;
-			_part.vida_max = _vida;
-			_part.vida_atual = _vida;
-			_part.cor_original = _cor
+				var _vida = random_range(_vida_min, _vida_max);
+				
+				velh_original = lengthdir_x(_vel_final, _dir_part);
+				velv_original = lengthdir_y(_vel_final, _dir_part);
+				
+				escala_original = _tam;
+				image_angle = _dir_part;
+				vida_max = _vida;
+				vida_atual = _vida;
+				cor_original = _cor
+				sprite_index = choose(spr_part_linha, spr_part_triang);
+			}
 		}
 	}
 }

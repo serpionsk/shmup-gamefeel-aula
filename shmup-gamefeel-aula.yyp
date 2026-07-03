@@ -201,6 +201,7 @@
     {"id":{"name":"spr_part_linha","path":"sprites/spr_part_linha/spr_part_linha.yy",},},
     {"id":{"name":"spr_part_tiro","path":"sprites/spr_part_tiro/spr_part_tiro.yy",},},
     {"id":{"name":"spr_part_tiroplayer","path":"sprites/spr_part_tiroplayer/spr_part_tiroplayer.yy",},},
+    {"id":{"name":"spr_part_triang","path":"sprites/spr_part_triang/spr_part_triang.yy",},},
     {"id":{"name":"spr_planet_padrao","path":"sprites/spr_planet_padrao/spr_planet_padrao.yy",},},
     {"id":{"name":"spr_planet_PB","path":"sprites/spr_planet_PB/spr_planet_PB.yy",},},
     {"id":{"name":"spr_planet_red","path":"sprites/spr_planet_red/spr_planet_red.yy",},},
