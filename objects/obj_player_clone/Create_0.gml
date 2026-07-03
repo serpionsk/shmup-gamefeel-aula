@@ -19,9 +19,12 @@ controla_player = function()
 	var _atirar;
 	_atirar = keyboard_check(vk_space) or mouse_check_button(mb_left);
 	
-	//segue a posição do player, mantendo a formação
-	x = obj_player.x + offset_x;
-	y = obj_player.y + offset_y;
+	if (instance_exists(obj_player))
+	{
+		//segue a posição do player, mantendo a formação
+		x = obj_player.x + offset_x;
+		y = obj_player.y + offset_y;
+	}
 	
 	//diminui o timer do tiro ao executar a propria função do tiro
 	timer_tiro--;

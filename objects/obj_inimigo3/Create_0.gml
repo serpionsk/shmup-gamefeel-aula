@@ -138,6 +138,7 @@ morrendo = function()
 		power_up(80);
 		global.pontos += 8;
 		destroi_unidade(obj_explosao_inimigo);
+		snd_effect(sfx_enemy_explosion);
 		screanshake(10);
 	}
 }

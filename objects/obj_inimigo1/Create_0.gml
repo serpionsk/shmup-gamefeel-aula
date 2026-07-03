@@ -23,7 +23,6 @@ tempo_para_atirar = function()
 atirando = function()
 {
 	audio_stop_sound(sfx_enemy_shoot);
-	snd_effect(sfx_enemy_shoot);
 	var _tiro_inimigo = instance_create_layer(x, y, "Projetil", obj_tiro_inimigo);
 	_tiro_inimigo.vel = 4;
 }
