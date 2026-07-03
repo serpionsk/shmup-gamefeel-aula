@@ -1,5 +1,5 @@
 audio_stop_all();
-//audio_play_sound(snd_musica,0,1);
+audio_play_sound(snd_musica,0,1);
 
 
 
@@ -30,12 +30,18 @@ meu_escudo = noone;
 invencivel = false;
 //segundos de invencibilidade
 segundos_invencivel = 2;
-
+//tempo restante para destruir os clones (0 = sem clones ativos)
+clone_timer = 0;
 //tempo de upgrade do power up
 level_tiro_timer = 0;
-
 //nivel base do tiro (muda para 2 no hard mode)
 base_level_tiro = 1;
+//tempo restante do power-up de velocidade (0 = inativo)
+speed_timer = 0;
+//velocidade base do player (para onde volta quando o power-up acaba)
+base_vel = 2;
+//tempo restante de invencibilidade (0 = inativo)
+invencivel_timer = 0;
 
 //inicia a alteraçãop nas escalas visuais do efeito mola(sem alterar colisao)
 inicia_efeito_mola();
@@ -81,18 +87,54 @@ controla_player = function()
 	y = clamp(y, (sprite_height/2), room_height - (sprite_height/2))
 	
 	
+	#region Timers
+
 	//diminui o timer do tiro ao executar a propria função do tiro
 	timer_tiro--;
-	
+
 	if (level_tiro_timer > 0)
 	{
 		level_tiro_timer--;
-	
+
 		if (level_tiro_timer <= 0)
 		{
 			level_tiro = base_level_tiro;
 		}
 	}
+
+	if (clone_timer > 0)
+	{
+		clone_timer--;
+
+		if (clone_timer <= 0)
+		{
+			instance_destroy(obj_player_clone);
+			snd_effect(sfx_elimina_clone, .1);
+		}
+	}
+
+	if (speed_timer > 0)
+	{
+		speed_timer--;
+
+		if (speed_timer <= 0)
+		{
+			vel = base_vel;
+		}
+	}
+
+	if (invencivel_timer > 0)
+	{
+		invencivel_timer--;
+
+		if (invencivel_timer <= 0)
+		{
+			invencivel = false;
+		}
+	}
+
+	#endregion
+	
 	
 	//se atirar e o timer tiro forem true
 	if (_atirar and timer_tiro <=0)
@@ -163,13 +205,19 @@ ganha_level = function()
 
 gera_clone = function()
 {
-	instance_create_layer(x + 50, y + 10, "Player", obj_player_clone)
-	instance_create_layer(x - 50, y + 10, "Player", obj_player_clone)
+	var _clone1 = instance_create_layer(x + 50, y + 10, "Player", obj_player_clone);
+	_clone1.offset_x = 50;
+	_clone1.offset_y = 10;
+	
+	var _clone2 = instance_create_layer(x - 50, y + 10, "Player", obj_player_clone);
+	_clone2.offset_x = -50;
+	_clone2.offset_y = 10;
+	
 	audio_stop_sound(sfx_gera_clone);
 	snd_effect(sfx_gera_clone, .2);
-	alarm[2] = game_get_speed(gamespeed_fps) * 4
-	
+	clone_timer = game_get_speed(gamespeed_fps) * 4;
 }
+
 power_up_vidas = function()
 {
 	vidas += 1
@@ -180,8 +228,8 @@ power_up_escudos = function()
 }
 power_up_speed = function()
 {
-	vel = 5
-	alarm[3] = game_get_speed(gamespeed_fps) * 6
+	vel = 5;
+	speed_timer = game_get_speed(gamespeed_fps) * 6;
 }
 
 
@@ -246,7 +294,7 @@ gasta_escudo = function()
 		escudos--;
 		meu_escudo = instance_create_layer(x, y, "Escudo", obj_escudo);
 		invencivel = true;
-		alarm[0] = game_get_speed(gamespeed_fps) * segundos_invencivel;
+		invencivel_timer = game_get_speed(gamespeed_fps) * segundos_invencivel;
 	}
 }
 

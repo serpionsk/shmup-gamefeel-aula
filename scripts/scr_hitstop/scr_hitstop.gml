@@ -51,6 +51,10 @@ function pega_backgrounds()
 
 function trava_backgrounds(_lista_backgrounds)
 {
+	//limpa os registros antigos antes de gravar os novos
+	obj_hitstop_manager.bgs_vspeed = [];
+	obj_hitstop_manager.bgs_hspeed = [];
+	
 	var _tamanho = array_length(_lista_backgrounds);
 	
 	for(i = 0; i < _tamanho; i++)
@@ -62,7 +66,6 @@ function trava_backgrounds(_lista_backgrounds)
 		
 		array_push(obj_hitstop_manager.bgs_vspeed, _vspeed);
 		array_push(obj_hitstop_manager.bgs_hspeed, _hspeed);
-
 		
 		layer_hspeed(_atual, 0);
 		layer_vspeed(_atual, 0);
@@ -77,6 +80,7 @@ function destrava_backgrounds(_lista_backgrounds, _bgs_hspeed, _bgs_vspeed)
 		var _hspeed = _bgs_hspeed[i];
 		var _vspeed = _bgs_vspeed[i];
 		
-		
+		layer_hspeed(_atual, _hspeed);
+		layer_vspeed(_atual, _vspeed);
 	}
 }

@@ -1,4 +1,2 @@
-//funcao de movimentacao, escudo e tiro do player
+//funcao de tiro e formação do clone
 controla_player();
-
-vel = obj_player.vel
