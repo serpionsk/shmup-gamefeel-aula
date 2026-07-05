@@ -9,3 +9,5 @@ desfaz_efeito_mola();
 timer_efeito_dano();
 
 tempo_para_atirar();
+ 
+if (global.gamemode == "hard") instance_destroy();

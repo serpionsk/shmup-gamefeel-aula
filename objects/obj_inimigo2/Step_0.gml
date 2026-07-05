@@ -6,6 +6,7 @@ desfaz_efeito_mola();
 
 timer_efeito_dano();
 
+if (global.gamemode == "hard") instance_destroy();
 
 y += velv;
 x += velh;
